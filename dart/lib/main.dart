@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const ChuvaDart());
@@ -13,7 +14,7 @@ class ChuvaDart extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff587CAF)),
         useMaterial3: true,
       ),
       home: const Calendar(),
@@ -41,62 +42,54 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Chuva ❤️ Flutter'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Programação',
-            ),
-            const Text(
-              'Nov',
-            ),
-            const Text(
-              '2023',
-            ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 26));
-              },
-              child: Text(
-                '26',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 28));
-              },
-              child: Text(
-                '28',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ),
-            if (_currentDate.day == 26)
-              OutlinedButton(
-                  onPressed: () {
-                    setState(() {
-                      _clicked = true;
-                    });
-                  },
-                  child: const Text('Mesa redonda de 07:00 até 08:00')),
-            if (_currentDate.day == 28)
-              OutlinedButton(
-                  onPressed: () {
-                    setState(() {
-                      _clicked = true;
-                    });
-                  },
-                  child: const Text('Palestra de 09:30 até 10:00')),
-            if (_currentDate.day == 26 && _clicked) const Activity(),
-          ],
+        appBar: AppBar(
+          centerTitle: true,
+          toolbarHeight: 120.0,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          leading: IconButton(
+              onPressed: () => print('Hello!'),
+              icon: Icon(
+                Icons.arrow_back_ios_new,
+                color: Theme.of(context).colorScheme.onPrimary,
+              )),
+          title: Column(
+            children: [
+              Text('Chuva 💜 Flutter',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
+                      color: Theme.of(context).colorScheme.onPrimary)),
+              Text('Programação',
+                  style: TextStyle(
+                      fontSize: 20.0,
+                      color: Theme.of(context).colorScheme.onPrimary)),
+            ],
+          ),
         ),
-      ),
-    );
+        body: Column(
+          children: [
+            Row(
+              children: [
+                const Column(
+                  children: [Text('Nov'), Text('2023')],
+                ),
+                Container(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  child: Row(
+                    children: [
+                      TextButton(
+                          onPressed: () => print('Hello'),
+                          child: const Text('26')),
+                      TextButton(
+                          onPressed: () => print('Hello'),
+                          child: const Text('28'))
+                    ],
+                  ),
+                )
+              ],
+            )
+          ],
+        ));
   }
 }
 
