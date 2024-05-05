@@ -61,13 +61,14 @@ class SpeakerBio extends StatelessWidget {
               children: [
                 Text(
                   'Atividades',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 10.0),
                   child: Text(
                     'dom., 26/11/2023',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
                   ),
                 ),
               ],
