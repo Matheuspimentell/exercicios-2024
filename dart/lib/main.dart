@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/activities.dart';
 import 'screens/activityDetails.dart';
+import 'screens/speakerBio.dart';
 
 void main() {
   runApp(const ChuvaDart());
@@ -67,7 +68,7 @@ class _CalendarState extends State<Calendar> {
             ],
           ),
         ),
-        body: const ActivityDetails());
+        body: const SpeakerBio());
   }
 }
 
